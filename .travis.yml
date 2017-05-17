@@ -20,7 +20,7 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew build connectedCheck createDebugCoverageReport jacocoTestReport assemble -PversionBuildNumber=${TRAVIS_BUILD_NUMBER}
+  - ./gradlew build connectedCheck createDebugCoverageReport assemble -PversionBuildNumber=${TRAVIS_BUILD_NUMBER}
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
