@@ -7,14 +7,18 @@ android {
         applicationId "hwd.voigt.de.hwd.app"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode project.versionCode.toInteger()
+        versionName "$versionMajor.$versionMinor.$versionMicro$versionMicroSuffix-$versionBuildNumber"
+        archivesBaseName = "$applicationName-$versionName"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
         }
     }
 }
@@ -27,4 +31,17 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
     testCompile 'junit:junit:4.12'
+}
+
+task copyDebugApk(type: Copy) {
+    from "$projectDir/build/outputs/apk"
+    into "$projectDir/build/outputs/debug"
+    include '*debug.apk'
+    rename { String fileName ->
+        fileName.replace('-debug', '')
+    }
+}
+
+gradle.projectsEvaluated {
+    assembleDebug.finalizedBy copyDebugApk
 }
