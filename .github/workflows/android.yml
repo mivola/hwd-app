@@ -47,4 +47,4 @@ jobs:
       uses: csexton/release-asset-action@v2
       with:
         name: apk
-        path: app/build/outputs/apk/*/*.apk
+        pattern: "app/build/outputs/apk/*/*.apk"
