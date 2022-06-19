@@ -44,7 +44,7 @@ jobs:
         name: reports
         path: '*/build/reports'
     - name: Upload APK
-      uses: csexton/release-asset-action@v2
+      uses: actions/upload-artifact@v2
       with:
-        name: apk
-        pattern: "app/build/outputs/apk/*/*.apk"
+        name: App bundle(s) and APK(s) generated
+        path: app/build/outputs/
