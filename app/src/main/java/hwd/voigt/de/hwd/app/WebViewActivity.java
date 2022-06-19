@@ -7,7 +7,7 @@ import android.webkit.WebViewClient;
 
 public class WebViewActivity extends AppCompatActivity {
 
-    private static final String HWD_URL = "http://hwd.michavoigt.de";
+    private static final String HWD_URL = "https://hwd.bts-computer.de";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
